@@ -12,7 +12,7 @@
     <meta property="og:title" content="AI-Powered Digital Marketing Masterclass | Create Better Content with AI" />
     <meta property="og:description" content="Master AI content creation, social media strategy & automation in 6 hours. Live training with Victor Adedoyin." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&auto=format&q=80" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/RevenueOS101/landingpage/refs/heads/main/hero_section.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -159,10 +159,13 @@
             font-weight: 800;
             font-size: 1.2rem;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .navbar-brand .brand-icon {
-            color: var(--primary-light);
-            margin-right: 8px;
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
         }
         .nav-link {
             color: var(--text-secondary) !important;
@@ -186,11 +189,171 @@
             transition: var(--transition);
             box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
             font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
         }
         .btn-nav:hover {
             transform: scale(1.03);
             box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
             color: #fff !important;
+        }
+
+        /* ================================================================ */
+        /* ===== ANIMATED CTA BUTTONS — GLOBAL ===== */
+        /* ================================================================ */
+
+        @keyframes ctaPulse {
+            0%,
+            100% {
+                box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 40px rgba(124, 58, 237, 0.6), 0 0 60px rgba(124, 58, 237, 0.15);
+            }
+        }
+
+        @keyframes ctaBreathe {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes ctaShimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes ctaRipple {
+            0% {
+                transform: scale(0);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .btn-hero-primary,
+        .btn-nav,
+        .pricing-card .btn-hero-primary,
+        .testimonial-cta-btn,
+        .sticky-register {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #7c3aed 100%);
+            background-size: 200% auto;
+            animation: ctaPulse 2.5s ease-in-out infinite, ctaBreathe 3s ease-in-out infinite, ctaShimmer 4s linear infinite;
+            will-change: transform, box-shadow;
+        }
+
+        .btn-hero-primary:hover,
+        .btn-nav:hover,
+        .pricing-card .btn-hero-primary:hover,
+        .testimonial-cta-btn:hover,
+        .sticky-register:hover {
+            animation-play-state: paused;
+            transform: translateY(-3px) scale(1.04) !important;
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.6) !important;
+        }
+
+        .btn-hero-primary::after,
+        .btn-nav::after,
+        .pricing-card .btn-hero-primary::after,
+        .testimonial-cta-btn::after,
+        .sticky-register::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .btn-hero-primary:active::after,
+        .btn-nav:active::after,
+        .pricing-card .btn-hero-primary:active::after,
+        .testimonial-cta-btn:active::after,
+        .sticky-register:active::after {
+            animation: ctaRipple 0.6s ease-out forwards;
+        }
+
+        .btn-hero-secondary {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: ctaBreathe 4s ease-in-out infinite;
+        }
+        .btn-hero-secondary:hover {
+            animation-play-state: paused;
+            transform: translateY(-3px) scale(1.03) !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .sticky-register {
+            display: none;
+            animation: ctaPulse 2s ease-in-out infinite, ctaBreathe 2.5s ease-in-out infinite, ctaShimmer 4s linear infinite;
+            background-size: 200% auto;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+            z-index: 999;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        @media (max-width: 768px) {
+            .sticky-register {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        .testimonial-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            margin-top: 12px;
+            width: 100%;
+            animation: ctaPulse 2.5s ease-in-out infinite, ctaBreathe 3s ease-in-out infinite, ctaShimmer 4s linear infinite;
+            background-size: 200% auto;
+        }
+        .testimonial-cta-btn:hover {
+            animation-play-state: paused;
+            transform: translateY(-3px) scale(1.04) !important;
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.6) !important;
+            color: #fff;
         }
 
         /* ================================================================ */
@@ -208,7 +371,6 @@
             overflow: hidden;
             background: var(--bg-dark);
         }
-        /* Ambient background glow */
         .hero-section::before {
             content: "";
             position: absolute;
@@ -244,7 +406,6 @@
             padding: 0 1.5rem;
         }
 
-        /* --- LEFT COLUMN: CONTENT --- */
         .hero-content {
             display: flex;
             flex-direction: column;
@@ -361,52 +522,7 @@
             margin-top: 0.5rem;
             width: 100%;
         }
-        .btn-hero-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);
-        }
-        .btn-hero-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(109, 40, 217, 0.5);
-            color: #fff;
-        }
-        .btn-hero-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.05);
-            color: #e5e7eb;
-        }
-        .btn-hero-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-        }
 
-        /* --- RIGHT COLUMN: IMAGE --- */
         .hero-visual {
             display: flex;
             align-items: center;
@@ -430,7 +546,6 @@
             border-radius: var(--radius-md);
         }
 
-        /* --- RESPONSIVE: HERO --- */
         @media (max-width: 1024px) {
             .hero-grid {
                 gap: 3rem;
@@ -620,16 +735,6 @@
             margin: 0;
         }
 
-        /* ===== PROBLEM CARDS ===== */
-        .problem-card {
-            background: rgba(239, 68, 68, 0.08);
-            border-left: 4px solid #EF4444;
-            padding: 14px 18px;
-            border-radius: var(--radius-sm);
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
         /* ===== COMPARE CARDS ===== */
         .compare-card {
             padding: 28px 22px;
@@ -672,48 +777,6 @@
             color: var(--text-primary);
         }
 
-        /* ===== AI DEMO ===== */
-        .ai-demo-section {
-            padding: 60px 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.08), transparent 70%);
-        }
-        .ai-demo-card {
-            background: var(--bg-card-solid);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            padding: 28px;
-        }
-        .ai-demo-output {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: var(--radius-sm);
-            padding: 18px;
-            border: 1px solid var(--border-glass);
-            position: relative;
-            min-height: 75px;
-            color: var(--text-primary);
-            font-size: 0.92rem;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-        .copy-prompt-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
-            color: var(--text-secondary);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .copy-prompt-btn:hover {
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
-        }
-
         /* ===== CURRICULUM ===== */
         .curriculum-item {
             display: flex;
@@ -751,41 +814,6 @@
         .curriculum-item p {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* ===== TIMELINE ===== */
-        .timeline-step {
-            padding: 18px;
-            background: var(--bg-card-solid);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            transition: var(--transition);
-        }
-        .timeline-step:hover {
-            border-color: rgba(124, 58, 237, 0.35);
-        }
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #fff;
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-        .timeline-step h5 {
-            color: #fff;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .timeline-step p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
             margin: 0;
         }
 
@@ -877,6 +905,109 @@
         }
         .pricing-region-container.visible {
             display: block;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial-card {
+            background: var(--bg-card-solid);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 28px 22px 22px;
+            text-align: center;
+            height: 100%;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.12);
+            background: rgba(20, 28, 50, 0.92);
+        }
+        .testimonial-quote-icon {
+            font-size: 3.2rem;
+            color: rgba(124, 58, 237, 0.12);
+            margin-bottom: -8px;
+            line-height: 1;
+            align-self: flex-start;
+        }
+        .testimonial-avatar-wrapper {
+            margin-top: -8px;
+            margin-bottom: 12px;
+        }
+        .testimonial-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover .testimonial-avatar {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 45px rgba(124, 58, 237, 0.3);
+        }
+        .testimonial-name {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .testimonial-stars {
+            color: #F59E0B;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .testimonial-stars i {
+            margin: 0 1px;
+        }
+        .testimonial-quote {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin: 0;
+            text-align: left;
+        }
+
+        .testimonial-card-cta {
+            justify-content: center;
+        }
+        .testimonial-icon-wrapper {
+            margin-top: 4px;
+            margin-bottom: 12px;
+        }
+        .testimonial-icon-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(91, 33, 182, 0.08));
+            border: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-light);
+            transition: var(--transition);
+            margin: 0 auto;
+        }
+        .testimonial-card-cta:hover .testimonial-icon-circle {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 45px rgba(124, 58, 237, 0.25);
+            transform: scale(1.04);
         }
 
         /* ===== FAQ ===== */
@@ -1082,37 +1213,6 @@
             width: 100%;
         }
 
-        /* ===== STICKY CTA (mobile) ===== */
-        .sticky-register {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #fff;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
-            z-index: 999;
-            display: none;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-        .sticky-register:hover {
-            transform: translateX(-50%) scale(1.03);
-        }
-        @media (max-width: 768px) {
-            .sticky-register {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-        }
-
         /* ===== FLOATING WHATSAPP ===== */
         .floating-whatsapp {
             position: fixed;
@@ -1231,7 +1331,8 @@
         .ai-demo-card,
         .registration-form-card,
         .guarantee-section,
-        .faq-accordion .accordion-item {
+        .faq-accordion .accordion-item,
+        .testimonial-card {
             background: var(--bg-card-solid) !important;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -1241,7 +1342,8 @@
         .compare-card:hover,
         .timeline-step:hover,
         .curriculum-item:hover,
-        .pricing-card:hover {
+        .pricing-card:hover,
+        .testimonial-card:hover {
             background: rgba(20, 30, 55, 0.9) !important;
             border-color: rgba(124, 58, 237, 0.35);
         }
@@ -1321,13 +1423,32 @@
         .footer h6 {
             color: #fff !important;
         }
+
+        .testimonial-quote {
+            color: var(--text-secondary) !important;
+        }
+        .testimonial-name {
+            color: #fff !important;
+        }
+        .testimonial-role {
+            color: var(--text-secondary) !important;
+        }
+        .testimonial-card-cta .testimonial-quote {
+            color: var(--text-secondary) !important;
+        }
+        .testimonial-card-cta .testimonial-quote strong {
+            color: #fff !important;
+        }
     </style>
 </head>
 <body>
     <!-- ========== NAVIGATION ========== -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#"><span class="brand-icon"><i class="fas fa-robot"></i></span>SIL TECH HUB</a>
+            <a class="navbar-brand" href="#">
+                <img src="https://raw.githubusercontent.com/RevenueOS101/landingpage/refs/heads/main/logo.png" alt="SIL TECH HUB AI Academy Logo" height="40" />
+                SIL TECH HUB
+            </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -1336,6 +1457,7 @@
                     <li class="nav-item"><a class="nav-link" href="#why">Why</a></li>
                     <li class="nav-item"><a class="nav-link" href="#curriculum">Curriculum</a></li>
                     <li class="nav-item"><a class="nav-link" href="#instructor">Instructor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                     <li class="nav-item ms-lg-2"><a class="btn btn-nav" href="#register">Reserve My Seat</a></li>
@@ -1368,7 +1490,7 @@
                 </div>
 
                 <h1 class="hero-title-new">
-                    <span class="highlight-gradient">Build</span> an AI-Powered Marketing System That Works Even When You're Offline
+                    Create<span class="highlight-gradient">Better</span> Content with AI
                 </h1>
 
                 <p class="hero-description">
@@ -1414,7 +1536,7 @@
             <!-- RIGHT COLUMN: IMAGE -->
             <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="hero-image-wrapper">
-                    <img src="https://solidsubstanceltd.com/slide_welcome2.png" alt="AI-Powered Digital Marketing Masterclass" loading="eager" />
+                    <img src="https://raw.githubusercontent.com/RevenueOS101/landingpage/refs/heads/main/hero_section.png" alt="AI-Powered Digital Marketing Masterclass - Hero Section" loading="eager" />
                 </div>
             </div>
 
@@ -1723,6 +1845,115 @@
                         <a href="https://wa.me/2348109508833" target="_blank" class="btn-hero-primary"><i class="fab fa-whatsapp"></i> Ask Victor a Question</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="section-padding" id="testimonials">
+        <div class="container">
+
+            <!-- Section Header -->
+            <div class="text-center" data-aos="fade-up">
+                <span class="section-label">SUCCESS STORIES</span>
+                <h2 class="section-title">Why Professionals Trust SIL TECH HUB AI Academy</h2>
+                <p class="section-subtitle">Professionals who have worked and learned with Victor share their experience.</p>
+                <div class="d-flex align-items-center justify-content-center gap-2 mt-3" style="color: #F59E0B;">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span style="color: var(--text-secondary); font-weight: 500; margin-left: 8px; font-size: 0.95rem;">Trusted by professionals across technology, AI, digital marketing and business.</span>
+                </div>
+            </div>
+
+            <!-- Testimonial Cards -->
+            <div class="row g-4 mt-4">
+
+                <!-- Card 1 – Deborah Effanga -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-avatar-wrapper">
+                            <img src="https://raw.githubusercontent.com/RevenueOS101/landingpage/refs/heads/main/deborah.jpeg" alt="Deborah Effanga — Digital Marketing Professional" class="testimonial-avatar" loading="lazy" width="110" height="110" />
+                        </div>
+                        <h4 class="testimonial-name">Deborah Effanga</h4>
+                        <p class="testimonial-role">Digital Marketing Professional</p>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <blockquote class="testimonial-quote">
+                            "It's been a pleasure learning from Victor. His teaching style is practical, easy to follow, and focused on real-world application rather than just theory.
+                            <br /><br />
+                            Through his guidance, I've gained valuable insights and a deeper understanding of digital marketing.
+                            <br /><br />
+                            I confidently recommend his AI-Powered Digital Marketing Masterclass to anyone looking to build practical digital marketing skills and apply them with confidence."
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Card 2 – Iyanu (CopyAdvocate) -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="testimonial-avatar-wrapper">
+                            <img src="https://raw.githubusercontent.com/RevenueOS101/landingpage/refs/heads/main/iyanu.jpeg" alt="Iyanu (CopyAdvocate) — Copywriter &amp; Content Strategist" class="testimonial-avatar" loading="lazy" width="110" height="110" />
+                        </div>
+                        <h4 class="testimonial-name">Iyanu (CopyAdvocate)</h4>
+                        <p class="testimonial-role">Copywriter &amp; Content Strategist</p>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <blockquote class="testimonial-quote">
+                            "I've seen Victor build applications, solve complex cybersecurity and IT challenges, and teach practical technology in a way people genuinely understand.
+                            <br /><br />
+                            He helped me simplify the technical side of digital marketing, giving me a clearer understanding of the tools, workflows and opportunities I could apply.
+                            <br /><br />
+                            If you're looking for someone who can turn complex technology into practical knowledge, Victor is the person to learn from."
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Card 3 – Student Success Stories / CTA -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card testimonial-card-cta">
+                        <div class="testimonial-quote-icon" style="color: rgba(124, 58, 237, 0.15);">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="testimonial-icon-wrapper">
+                            <div class="testimonial-icon-circle">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <h4 class="testimonial-name" style="color: #fff;">Student Success Stories</h4>
+                        <p class="testimonial-role" style="color: var(--text-secondary); font-weight: 400; font-size: 0.95rem;">
+                            Our first cohort begins on <strong style="color: #fff;">29 August 2026</strong>.
+                        </p>
+                        <div style="height: 2px; width: 40px; background: linear-gradient(90deg, var(--primary), transparent); margin: 8px auto 14px;"></div>
+                        <blockquote class="testimonial-quote" style="font-size: 0.95rem; color: var(--text-secondary);">
+                            Student transformations, measurable outcomes and success stories will be featured here.
+                            <br /><br />
+                            <strong style="color: #fff;">Be part of our first success stories.</strong>
+                        </blockquote>
+                        <button class="testimonial-cta-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+                            <i class="fas fa-rocket"></i> Reserve Your Seat
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -2061,9 +2292,12 @@
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer>
+    </script>
 
     <script>
         // ============ INIT ============
